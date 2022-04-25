@@ -13,69 +13,69 @@
 
 <br />
 
-## Chapter VI - Desafio 01 - Construindo com serverless
+## Chapter VI - Challenge 01 - Building with serverless
 
-Nesse desafio você irá recriar uma parte da API de *todos* que foi desenvolvida no desafio [Conceitos do Node.js](https://www.notion.so/Desafio-01-Conceitos-do-Node-js-59ccb235aecd43a6a06bf09a24e7ede8) mas dessa vez deverá ser usado o framework [Serverless](https://www.serverless.com/).
+In this challenge you will recreate a part of the *todos* API that was developed in the challenge [Conceitos do Node.js](https://www.notion.so/Desafio-01-Conceitos-do-Node-js-59ccb235aecd43a6a06bf09a24e7ede8) but this time the framework should be used [Serverless](https://www.serverless.com/).
 
 <br />
 
-Cada funcionalidade deverá ser criada em um arquivo de função separada de acordo com o que foi visto nesse último módulo.
-As rotas que deverão existir são:
+Each functionality must be created in a separate function file according to what was seen in this last module.
+The routes that must exist are:
 
 
 - **POST -** `/createTODO/{userid}`
 
-    Essa rota deve receber o `id` de um usuário pelo `pathParameters` (você pode criar esse id manualmente apenas para preencher o campo) e os seguintes campos no corpo da requisição: `title` e `deadline`, onde `deadline` é a data limite para o *todo*.
+    This route must receive the `id` of a user by `pathParameters` (you can create this id manually just to fill the field) and the following fields in the body of the request: `title` and `deadline`, where `deadline` is the deadline for the *todo*.
 
-    O *todo* deverá ser salvo com os seguintes campos no DynamoDB:
+    The *todo* must be saved with the following fields in DynamoDB:
 
     ```
     { 
-    	id: 'uuid', // id gerado para garantir um único todo com o mesmo id
-    	user_id: 'uuid' // id do usuário recebido no pathParameters
-    	title: 'Nome da tarefa',
-    	done: false, // iniciado sempre como false
-    	deadline: '2021-06-26'
+    	id: 'uuid', // generated id to guarantee a unique todo with the same id
+    	user_id: 'uuid' // userid received in pathParameters
+    	title: 'Task title',
+    	done: false, // Always initiate as false
+    	deadline: '2022-06-26'
     }
     ```
 
 - **GET -** `/listTODO/{userid}`
 
-    Essa rota deve receber o `id` de um usuário pelo `pathParameters` (o mesmo id que foi usado para criar algum *todo*).
+    This route must receive the `id` of a user by `pathParameters` (the same id that was used to create some *todo*).
 
-    A rota deve retornar os *todos* que possuírem o `user_id` igual ao `id` recebido pelos parâmetros.
+    The route must return *all* that have the `user_id` equal to the `id` received by the parameters.
 
 <br />
 
-## 💻 Download, instação de dependências e executação do Projeto
-**1.** Clone este repositório 
+## 💻 Downloading, installing dependencies and running the Project
+**1.** Clone this repository
 ```
-git clone git@github.com:evertonpavan/ignite-challenge-serverless.git
+git clone git@github.com/felpst/serverless-challenge
 
 ``` 
-**2.** Vá até o diretório raiz do projeto
+**2.** Go to the project root directory
 ```
 cd ignite-challenge-serverless
 ``` 
-**3.** Instale as dependências necessárias
+**3.** Install the necessary dependencies
 ```
 yarn install
 ```
-**4.** Crie o arquivo .env (utilizando como exemplo o .env.example)
+**4.** Create the .env file (using .env.example as an example)
 ```
 cp .env.example .env
 ```
-**5.** Instale e inicie o dynamoDB
+**5.** Install and start dynamoDB
 ```
 serverless dynamodb install
 serverless dynamodb start
 ```
-**6.** Execute a aplicação
+**6.** Run the application
 ```
 yarn dev
 ```
 
 <br />
 
-## Usando a Aplicação
-Para realização de **requisições** na aplicação, deve ser utilizado o **Insomnia** ou **Postman**, importando o [arquivo](insomnia) de requisições.
+## Using the Application
+To perform **requests** in the application, **Insomnia** or **Postman** must be used, importing the requests [file](insomnia).
